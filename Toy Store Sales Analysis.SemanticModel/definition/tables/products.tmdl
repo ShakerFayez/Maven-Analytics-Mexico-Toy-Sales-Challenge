@@ -1,0 +1,64 @@
+table products
+	lineageTag: 23486cc1-4ae5-45e2-b584-48e150dc1792
+
+	column Product_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: e12e86c0-b0fe-4233-b9d2-fde7755ab1e5
+		summarizeBy: none
+		sourceColumn: Product_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Name
+		dataType: string
+		lineageTag: ab9a31ff-5f77-41ef-b38c-a1abc3f2a809
+		summarizeBy: none
+		sourceColumn: Product_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Category
+		dataType: string
+		lineageTag: d13e0a7d-e90b-4040-aa45-2af8dd540987
+		summarizeBy: none
+		sourceColumn: Product_Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Cost
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 2da52526-451c-4a0d-ae02-8fee6b060daf
+		summarizeBy: sum
+		sourceColumn: Product_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Product_Price
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 9aa72eed-aaad-46ac-a94e-158ab3398c2f
+		summarizeBy: sum
+		sourceColumn: Product_Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	partition products = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("E:\Data\Maven Toys Data\products.csv"), [Delimiter = ",", Columns = 5, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"Product_ID", Int64.Type}, {"Product_Name", type text}, {"Product_Category", type text}, {"Product_Cost", Currency.Type}, {"Product_Price", Currency.Type}})
+				in
+				  #"Changed column type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

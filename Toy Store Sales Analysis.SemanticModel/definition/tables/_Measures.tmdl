@@ -1,0 +1,395 @@
+table _Measures
+	lineageTag: eb6527ba-5287-4e42-95f5-1126133424ad
+
+	measure 'Total Revenue' = SUMX(sales, sales[Units] * RELATED(products[Product_Price]))
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 68ec26bb-9c08-4921-a2ad-2d4dedac7233
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Profit' =
+			
+			SUMX(
+			    Sales,
+			    Sales[Units] *
+			    (
+			        RELATED(Products[Product_Price]) -
+			        RELATED(Products[Product_Cost])
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 07aac868-abd4-4ed9-878b-1f787410b770
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Orders Count' = DISTINCTCOUNT(sales[Sale_ID])
+		formatString: 0
+		lineageTag: dc88b565-c13a-4a36-a916-9e9980961f27
+
+	measure 'Profit Margin %' = DIVIDE([Total Profit], [Total Revenue], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d7a466a7-4ad9-417e-95fe-bae5c0248be5
+
+	measure 'Total Cost' = SUMX(sales, sales[Units] * RELATED(products[Product_Cost]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 93e28fe8-11f1-4bea-91d9-849ae2d1a978
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Units Sold' = SUM(sales[Units])
+		formatString: 0.00
+		lineageTag: 86af508c-83da-4630-895c-e93fcde6f849
+
+	measure 'Avg Order Value' = DIVIDE([Total Revenue], [Total Orders Count], 0)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: f4a434d3-68dd-42e6-a79d-1996a9a25bf5
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Avg Units Per Order' = DIVIDE([Total Units Sold], [Total Orders Count], 0)
+		lineageTag: 80f094cc-56c6-4d50-b7c5-fd4a3fbda893
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Revenue QoQ%' =
+			
+			VAR __PREV_QUARTER = CALCULATE([Total Revenue], DATEADD('Calendar'[Date], -1, QUARTER))
+			RETURN
+				DIVIDE([Total Revenue] - __PREV_QUARTER, __PREV_QUARTER)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5f04231b-e449-4aad-9c66-1ede1efad58b
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "QuarterOverQuarter"
+				}
+
+	measure 'Profit Contribution %' =
+			
+			DIVIDE(
+			    [Total Profit],
+			    CALCULATE(
+			        [Total Profit],
+			        REMOVEFILTERS(Products[Product_Category])
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6b734899-f0b8-4e11-9d60-cc703efb8315
+
+	measure 'Peak Revenue Month' =
+			
+			VAR MonthlyRevenue =
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL('Calendar'),
+			            'Calendar'[Year],
+			            'Calendar'[Month],
+			            'Calendar'[Month Num]
+			        ),
+			        "Revenue", CALCULATE([Total Revenue])
+			    )
+			VAR PeakMonth =
+			    TOPN(
+			        1,
+			        MonthlyRevenue,
+			        [Revenue], DESC
+			    )
+			RETURN
+			    MAXX(
+			        PeakMonth,
+			        'Calendar'[Month] & " " & 'Calendar'[Year]
+			    )
+		lineageTag: 6ca6b603-a86f-498a-bdb4-6903028223c0
+
+	measure 'Peak Monthly Revenue' =
+			
+			MAXX(
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL('Calendar'),
+			            'Calendar'[Year],
+			            'Calendar'[Month],
+			            'Calendar'[Month Num]
+			        ),
+			        "Revenue", CALCULATE([Total Revenue])
+			    ),
+			    [Revenue]
+			)
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 7ea2163e-4d40-4c12-96e9-194e1015f9b8
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Avg Revenue' = AVERAGEX(sales, sales[Units] * RELATED(products[Product_Price]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 97f7268b-7d08-48c0-8b5d-daa39b42163e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Lowest Monthly Revenue' =
+			
+			MINX(
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL('Calendar'),
+			            'Calendar'[Year],
+			            'Calendar'[Month],
+			            'Calendar'[Month Num]
+			        ),
+			        "Revenue", CALCULATE([Total Revenue])
+			    ),
+			    [Revenue]
+			)
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 4526ff1a-10a1-4ae0-beb4-f934b7d7a228
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Lowest Revenue Month' =
+			
+			VAR MonthlyRevenue =
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL('Calendar'),
+			            'Calendar'[Year],
+			            'Calendar'[Month],
+			            'Calendar'[Month Num]
+			        ),
+			        "Revenue", CALCULATE([Total Revenue])
+			    )
+			VAR ValidMonths =
+			    FILTER(
+			        MonthlyRevenue,
+			        NOT ISBLANK([Revenue])
+			    )
+			VAR LowestMonth =
+			    TOPN(
+			        1,
+			        ValidMonths,
+			        [Revenue], ASC
+			    )
+			RETURN
+			    MAXX(
+			        LowestMonth,
+			        'Calendar'[Month] & " " & 'Calendar'[Year]
+			    )
+		lineageTag: 22515188-8d2c-45c4-855b-bf12a3d9358b
+
+	measure 'Products Out of Stock' = CALCULATE(COUNTROWS(inventory), inventory[Stock_On_Hand] = 0)
+		formatString: 0
+		lineageTag: ea95f268-91c0-40cc-9dd0-1b776f39cb65
+
+	measure 'Stockout Rate' = DIVIDE([Products Out of Stock], COUNTROWS(inventory))
+		formatString: 0%;-0%;0%
+		lineageTag: 930bf430-f80e-432c-8cd2-2d03e1cb1890
+
+	measure 'Stores Affected by Stockouts' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Inventory[Store_ID]),
+			    Inventory[Stock_On_Hand] = 0
+			)
+		formatString: 0
+		lineageTag: 0447c773-bad7-4853-a418-070dade7452a
+
+	measure 'Last Sale Date' = CALCULATE(MAX(sales[Date]), ALL(sales))
+		formatString: General Date
+		lineageTag: 0ba91b5f-8be8-49a1-a64d-772f018771e5
+
+	measure 'Avg Daily Units Sold (30d)' = ```
+			
+			VAR Last_Date = [Last Sale Date]
+			VAR WindowStart = Last_Date - 30
+			VAR UnitsInWindow = 
+			    CALCULATE(
+			        SUM(sales[Units]),
+			        sales[Date] > WindowStart,
+			        sales[Date] <= Last_Date
+			    )
+			RETURN
+			DIVIDE(UnitsInWindow, 30)
+			```
+		lineageTag: d317f972-cab5-4095-b174-c435cd6fcfcf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Estimated Lost Sales (Units)' =
+			
+			VAR IsOOS = [Products Out of Stock] > 0
+			VAR DailyRate = [Avg Daily Units Sold (30d)]
+			RETURN
+			IF(IsOOS, DailyRate * 30, 0)
+		formatString: 0
+		lineageTag: 37c178e9-f078-470a-8a27-d374c53f8682
+
+	measure 'Estimated Lost Revenue' =
+			
+			SUMX(
+			    inventory,
+			    [Estimated Lost Sales (Units)] * RELATED(products[Product_Price])
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 2acfb4a5-b139-4c00-85fc-1aaaf9eac3ad
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Units in Stock' = SUM(inventory[Stock_On_Hand])
+		formatString: 0
+		lineageTag: 10c5424e-b377-49a7-a67e-14701c7503b0
+
+	measure 'Top Category by Profit' =
+			
+			CALCULATE(
+			    SELECTEDVALUE(products[Product_Category]),
+			    TOPN(1, ALL(products[Product_Category]), [Total Profit], DESC)
+			)
+		lineageTag: 936ff7f6-b1b7-463c-9bd8-da97f1df9115
+
+	measure 'Total Inventory Cost' =
+			
+			SUMX(inventory, inventory[Stock_On_Hand] * RELATED(products[Product_Cost]))
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 8be81aaa-13a2-4def-8920-7412ab08c827
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Inventory Value (Retail)' =
+			
+			SUMX(inventory, inventory[Stock_On_Hand] * RELATED(products[Product_Price]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: c1f0d90e-485d-453e-8236-9f305f2a5b53
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Overstock Risk SKUs' =
+			
+			COUNTROWS(
+			    FILTER(
+			        inventory,
+			        VAR ProdID = inventory[Product_ID]
+			        VAR StoreID = inventory[Store_ID]
+			        VAR DailyRate = CALCULATE([Avg Daily Units Sold (30d)], sales[Product_ID] = ProdID, sales[Store_ID] = StoreID)
+			        VAR Days = DIVIDE(inventory[Stock_On_Hand], DailyRate)
+			        RETURN Days > 90
+			    )
+			)
+		formatString: 0
+		lineageTag: b5780b10-1a3b-4c2c-8955-93f3bd423296
+
+	measure 'Overall Days of Supply' =
+			
+			DIVIDE(
+			    [Total Units in Stock],
+			    [Avg Daily Units Sold (30d)]
+			)
+		lineageTag: 54ffa6d3-ad40-41bf-9e28-bf2e4423778b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Overstocked SKU-Store Combinations' =
+			
+			COUNTROWS(
+			    FILTER(
+			        inventory,
+			        VAR ProductID = inventory[Product_ID]
+			        VAR StoreID = inventory[Store_ID]
+			        VAR Stock = inventory[Stock_On_Hand]
+			
+			        VAR DailyRate =
+			            CALCULATE(
+			                [Avg Daily Units Sold (30d)],
+			                sales[Product_ID] = ProductID,
+			                sales[Store_ID] = StoreID
+			            )
+			
+			        VAR DaysOfSupply =
+			            DIVIDE(
+			                Stock,
+			                DailyRate
+			            )
+			
+			        RETURN
+			            Stock > 0
+			                && (
+			                    COALESCE(DailyRate, 0) = 0
+			                    || DaysOfSupply > 90
+			                )
+			    )
+			)
+		formatString: 0
+		lineageTag: 44898d2c-05a4-4df8-8158-9267a4ee608e
+
+	measure 'Inventory Cost at Risk' =
+			
+			SUMX(
+			    FILTER(
+			        inventory,
+			        VAR ProductID = inventory[Product_ID]
+			        VAR StoreID = inventory[Store_ID]
+			        VAR Stock = inventory[Stock_On_Hand]
+			
+			        VAR DailyRate =
+			            CALCULATE(
+			                [Avg Daily Units Sold (30d)],
+			                sales[Product_ID] = ProductID,
+			                sales[Store_ID] = StoreID
+			            )
+			
+			        VAR DaysOfSupply =
+			            DIVIDE(
+			                Stock,
+			                DailyRate
+			            )
+			
+			        RETURN
+			            Stock > 0
+			                && (
+			                    COALESCE(DailyRate, 0) = 0
+			                    || DaysOfSupply > 90
+			                )
+			    ),
+			    inventory[Stock_On_Hand]
+			        * RELATED(products[Product_Cost])
+			)
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: fe265236-f7eb-4097-83b5-a769ab265781
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Overstock Exposure %' =
+			
+			DIVIDE(
+			    [Inventory Cost at Risk],
+			    [Total Inventory Cost]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 839dc5c4-4c51-41c5-b0c0-09e6454827c5
+
+	measure '% of Total Revenue' =
+			
+			DIVIDE(
+			    [Total Revenue],
+			    CALCULATE([Total Revenue], ALL(products[Product_Category]))
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b57c4b99-00df-4657-860a-0a778762464b
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 24b3538c-47f7-4b49-ac7f-f2ae3fe82e86
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = ea0f7fd6c10d48a398a0a68e2f6d6092
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

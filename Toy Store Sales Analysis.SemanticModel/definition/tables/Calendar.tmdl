@@ -1,0 +1,538 @@
+table Calendar
+	lineageTag: fc165c30-4484-46d8-be18-17a443f4bcd7
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: c93bdd1c-eb8e-447a-848f-619515e2b7a7
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date Relative Num'
+		dataType: double
+		lineageTag: 8f471fab-be50-4e9b-962b-844cdff71ccb
+		summarizeBy: none
+		sourceColumn: Date Relative Num
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 15a1276b-6236-4a16-9ba2-c54777c184a5
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 61f23941-bce5-4036-9266-768eacb97c91
+		summarizeBy: none
+		sourceColumn: Year Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Year Relative Num'
+		dataType: int64
+		formatString: 0
+		lineageTag: 396c8abd-211d-4e81-862b-c5454123eff7
+		summarizeBy: none
+		sourceColumn: Year Relative Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fis Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: b2d96dc0-5b06-4306-b269-6fec4c4796ab
+		summarizeBy: none
+		sourceColumn: Fis Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fis Year Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b06b347e-4bf8-4fa1-916e-90c1ad37d43c
+		summarizeBy: none
+		sourceColumn: Fis Year Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fis Year Relative Num'
+		dataType: int64
+		formatString: 0
+		lineageTag: a44ba3e2-077b-4bce-a294-37794d9caac8
+		summarizeBy: none
+		sourceColumn: Fis Year Relative Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtr Num'
+		dataType: int64
+		formatString: 0
+		lineageTag: 889fc0b8-7e8c-4690-8510-bbef99ea5385
+		summarizeBy: none
+		sourceColumn: Qtr Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qtr
+		dataType: string
+		lineageTag: e04e5847-6205-4215-af80-dcf19d7dcd04
+		summarizeBy: none
+		sourceColumn: Qtr
+		sortByColumn: 'Qtr Num'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtr qq-yy'
+		dataType: string
+		lineageTag: 7043b795-fe1b-4e70-85f7-9995e5214e91
+		summarizeBy: none
+		sourceColumn: Qtr qq-yy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtr Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 92241715-1430-4f3c-9f21-4a308e606950
+		summarizeBy: none
+		sourceColumn: Qtr Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fis Qtr Num'
+		dataType: double
+		lineageTag: cf2d22a5-b31c-48fc-89a2-87ae6c7f3ebf
+		summarizeBy: none
+		sourceColumn: Fis Qtr Num
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Fis Qtr'
+		dataType: string
+		lineageTag: effa4ea4-d73d-44f2-9a7f-64d8bbae88b3
+		summarizeBy: none
+		sourceColumn: Fis Qtr
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fis Qtr Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8333ad51-3264-4114-8ab3-076acdad5d0a
+		summarizeBy: none
+		sourceColumn: Fis Qtr Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fis Qtr qq-yy'
+		dataType: string
+		lineageTag: eb578d5f-2204-4945-b146-40c1f2518af9
+		summarizeBy: none
+		sourceColumn: Fis Qtr qq-yy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtr Relative Num'
+		dataType: double
+		lineageTag: 4502510d-cee3-442b-9d71-1165ca76a335
+		summarizeBy: none
+		sourceColumn: Qtr Relative Num
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Month Num'
+		dataType: int64
+		formatString: 0
+		lineageTag: 46702578-dbe0-401b-a24a-99e7ec6892d9
+		summarizeBy: none
+		sourceColumn: Month Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 65e4c2fb-3861-4442-8c67-68e7dc439a1a
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: 'Month Num'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month mmm-yyyy'
+		dataType: string
+		lineageTag: d96d31ba-0b0a-437d-84dc-363435fb5258
+		summarizeBy: none
+		sourceColumn: Month mmm-yyyy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 99b448e4-afd5-40f2-aeb7-f16adca11d1e
+		summarizeBy: none
+		sourceColumn: Month Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fis Month Num'
+		dataType: int64
+		formatString: 0
+		lineageTag: 231bb7ae-2e0d-4c80-873d-f2c5da9af324
+		summarizeBy: none
+		sourceColumn: Fis Month Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fis Month mmm-yyyy'
+		dataType: string
+		lineageTag: 0f66d9b7-3da3-47e2-96ae-53520e2e2918
+		summarizeBy: none
+		sourceColumn: Fis Month mmm-yyyy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fis Month Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fb7eae57-a380-4b09-a2e2-3ec70ed9c7fd
+		summarizeBy: none
+		sourceColumn: Fis Month Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fis Month'
+		dataType: string
+		lineageTag: 005edb2a-3a2d-4835-9fb2-ac60cdeab996
+		summarizeBy: none
+		sourceColumn: Fis Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Relative Num'
+		dataType: double
+		lineageTag: 325cfa1a-4946-4c08-b013-d243c5e2924d
+		summarizeBy: none
+		sourceColumn: Month Relative Num
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Week of Year (USA)'
+		dataType: double
+		lineageTag: f7b26588-6c4e-4e68-8232-e21bcd2b4601
+		summarizeBy: none
+		sourceColumn: Week of Year (USA)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Week Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2e3e60f3-9bc5-4adf-8237-1bc993e17106
+		summarizeBy: none
+		sourceColumn: Week Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fis Week Of Year (USA)'
+		dataType: double
+		lineageTag: 542d0251-b223-4b6b-88ae-12401ed3e01c
+		summarizeBy: none
+		sourceColumn: Fis Week Of Year (USA)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Week Relative'
+		dataType: double
+		lineageTag: dc86bd62-bcd2-4517-b83d-fae671b49f95
+		summarizeBy: none
+		sourceColumn: Week Relative
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Day of Week'
+		dataType: string
+		lineageTag: e371dc34-ebdd-4ead-961e-30cacdbb1d29
+		summarizeBy: none
+		sourceColumn: Day of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Wk Num'
+		dataType: int64
+		formatString: 0
+		lineageTag: a722e512-4015-4d40-bdf9-406451551004
+		summarizeBy: none
+		sourceColumn: Day of Wk Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Flag'
+		dataType: int64
+		formatString: 0
+		lineageTag: 26b5140d-d931-4eed-97a0-dba748f061bd
+		summarizeBy: none
+		sourceColumn: Weekday Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Label'
+		dataType: string
+		lineageTag: 5abeb360-e754-435d-9616-cad71b9d9da9
+		summarizeBy: none
+		sourceColumn: Weekday Label
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Date Hierarchy'
+		lineageTag: 63b64d99-8aa6-43a6-bc4f-c8c10dcc07e1
+
+		level Year
+			lineageTag: ea7b0c61-29b5-43af-9e87-5efba7a6a7f7
+			column: Year
+
+		level Qtr
+			lineageTag: 74d99628-833b-4f7c-ba61-510735e4ab0c
+			column: Qtr
+
+		level Month
+			lineageTag: 54fa8ba3-a882-48c4-baef-956f861ab92f
+			column: Month
+
+		level Date
+			lineageTag: b30b53ed-3845-428d-933d-58bcf70d0271
+			column: Date
+
+	partition Calendar = m
+		mode: import
+		source = ```
+				//Calendarfornia Dreamin - Brian Grant - 2020-05-08 0901
+				let
+				    #"»»»» Table Setup ««««" = Table.FromRecords( { [] } ),
+				    // Which day should the calendar start on?
+				    // #date(2019, 7, 1) for Jul 1st 2019
+				    #"SET start date" = Table.AddColumn(#"»»»» Table Setup ««««", "Start", each #date( 2022, 1, 1 )),
+				    // How many years past the current calendar year should this run?
+				    #"SET years past current" = Table.AddColumn(#"SET start date", "Years Past Current", each 1),
+				    // What day of the week is the first?
+				    #"SET first day of week" = Table.AddColumn(#"SET years past current", "First Day of Wk Num", each Day.Sunday),
+				    // Which month of the calendar year does the fiscal year start on?
+				    #"SET first month of fiscal" = Table.AddColumn(#"SET first day of week","FirstMonthOfFiscal", each 7),
+				    #"»»»» (End Setup) ««««" = #"SET first month of fiscal",
+				    #"----------------" = #"»»»» (End Setup) ««««",
+				    #"--Build Dates--" = #"----------------",
+				    #"DEFINE first month of fiscal" = Table.AddColumn(#"--Build Dates--", "LastMonthOfFiscal", each Number.Mod( [FirstMonthOfFiscal] + 10, 12 ) + 1 ),
+				    #"DEFINE end" = Table.AddColumn(#"DEFINE first month of fiscal", "End", each Date.AddYears(
+				    Date.EndOfYear(
+				        Date.From(
+				            DateTime.FixedLocalNow()
+				        )
+				    ),
+				    [Years Past Current]
+				), type date ),
+				    #"DEFINE date" = Table.AddColumn(#"DEFINE end", "Date", each
+				List.Dates(
+				    [Start],
+				    Number.From( [End] - [Start] ) + 1,
+				    Duration.From(1)
+				)
+				),
+				    #"KEEP essential columns" = Table.SelectColumns(#"DEFINE date",{"First Day of Wk Num", "LastMonthOfFiscal", "FirstMonthOfFiscal", "Date"}),
+				    #"EXPAND date" = Table.ExpandListColumn(#"KEEP essential columns", "Date"),
+				    #"CAST as date" = Table.TransformColumnTypes(#"EXPAND date",{{"Date", type date}, {"LastMonthOfFiscal", Int64.Type}, {"FirstMonthOfFiscal", Int64.Type}}),
+				    #"--Add Helper Columns--" = #"CAST as date",
+				    #"DEFINE date fis equiv" = Table.AddColumn(#"--Add Helper Columns--", "FisRefDate", each Date.AddMonths( [Date], 12 - [LastMonthOfFiscal] )),
+				    #"--Date Columns--" = #"DEFINE date fis equiv",
+				    #"ADD date relative" = Table.AddColumn(#"--Date Columns--", "Date Relative Num", each Duration.Days( 
+				    [Date] - 
+				    Date.From( DateTime.FixedLocalNow() ) 
+				), type number),
+				    #"--Year Columns--" = #"ADD date relative",
+				    #"ADD year" = Table.AddColumn(#"--Year Columns--", "Year", each Date.Year([Date]), Int64.Type),
+				    #"ADD year start date" = Table.AddColumn(#"ADD year", "Year Start Date", each Date.StartOfYear([Date]), type date),
+				    #"ADD year relative num" = Table.AddColumn(#"ADD year start date", "Year Relative Num", each Date.Year([Date]) - 
+				Date.Year(DateTime.From(DateTime.FixedLocalNow())), Int64.Type),
+				    #"ADD fis year" = Table.AddColumn(#"ADD year relative num", "Fis Year", each Date.Year([FisRefDate]), Int64.Type),
+				    #"ADD fis year start date" = Table.AddColumn(#"ADD fis year", "Fis Year Start Date", each 
+				Date.AddMonths( Date.StartOfYear([FisRefDate]) , -1 * (12 - [LastMonthOfFiscal] ) )
+				
+				, type date),
+				    #"ADD fis year relative num" = Table.AddColumn(#"ADD fis year start date", "Fis Year Relative Num", each [
+				vrSysDate = Date.From(DateTime.FixedLocalNow()),
+				vrLastMonFY = [LastMonthOfFiscal], 
+				
+				vrSysEquivDate = 
+				    Date.AddMonths( 
+				        vrSysDate, 
+				        12 - vrLastMonFY 
+				    ),
+				vrSysFY = Date.Year( vrSysEquivDate ),
+				vrRowFY = Date.Year([FisRefDate]),
+				vrRelativeFY = vrRowFY - vrSysFY
+				][vrRelativeFY], Int64.Type),
+				    #"--Qtr Columns--" = #"ADD fis year relative num",
+				    #"ADD quarter num" = Table.AddColumn(#"--Qtr Columns--", "Qtr Num", each Date.QuarterOfYear([Date]), Int64.Type),
+				    #"ADD quarter" = Table.AddColumn(#"ADD quarter num", "Qtr", each "Q" & Text.From( Date.QuarterOfYear([Date]) ), type text),
+				    #"ADD qtr qq-yy" = Table.AddColumn(#"ADD quarter", "Qtr qq-yy", each 
+				"Q" & Text.From( Date.QuarterOfYear([Date]) ) & 
+				"-" & Date.ToText([Date], "yy"), type text),
+				    #"ADD qtr start" = Table.AddColumn(#"ADD qtr qq-yy", "Qtr Start Date", each Date.StartOfQuarter([Date]), type date),
+				    #"ADD fis qtr num" = Table.AddColumn(#"ADD qtr start", "Fis Qtr Num", each Date.QuarterOfYear( [FisRefDate] ), type number),
+				    #"ADD fis qtr" = Table.AddColumn(#"ADD fis qtr num", "Fis Qtr", each "Q" & Text.From( Date.QuarterOfYear( [FisRefDate]) ), type text),
+				    #"ADD fis qtr start date" = Table.AddColumn(#"ADD fis qtr", "Fis Qtr Start Date", each Date.StartOfQuarter([Date]), type date),
+				    #"ADD fis qtr qq-yy" = Table.AddColumn(#"ADD fis qtr start date", "Fis Qtr qq-yy", each "Q" & Text.From( Date.QuarterOfYear( [FisRefDate] ) ) & 
+				"-" & Date.ToText( [FisRefDate], "yy"), type text),
+				    #"ADD qtr relative num" = Table.AddColumn(#"ADD fis qtr qq-yy", "Qtr Relative Num", each
+				(
+				    Date.Year(Date.From([Date])) * 4 + 
+				    Date.QuarterOfYear(Date.From([Date])) 
+				) -
+				(
+				    Date.Year(Date.From(DateTime.FixedLocalNow())) * 4 + 
+				    Date.QuarterOfYear(Date.From(DateTime.FixedLocalNow())) 
+				),
+				type number),
+				    #"--Month Columns--" = #"ADD qtr relative num",
+				    #"ADD month num" = Table.AddColumn(#"--Month Columns--", "Month Num", each Date.Month([Date]), Int64.Type),
+				    #"ADD month" = Table.AddColumn(#"ADD month num", "Month", each Date.ToText( [Date], "MMM" ), type text),
+				    #"ADD month mmm-yyyy" = Table.AddColumn(#"ADD month", "Month mmm-yyyy", each Date.ToText( [Date], "MMM-yyyy" ), type text),
+				    #"ADD month start date" = Table.AddColumn(#"ADD month mmm-yyyy", "Month Start Date", each Date.StartOfMonth([Date]), type date),
+				    #"ADD fis month num" = Table.AddColumn(#"ADD month start date", "Fis Month Num", each Date.Month([FisRefDate]), Int64.Type),
+				    #"ADD fis month mmm-yyyy" = Table.AddColumn(#"ADD fis month num", "Fis Month mmm-yyyy", each Date.ToText( [Date], "MMM" ) & "-" & Date.ToText( [FisRefDate], "yyyy" ), type text),
+				    #"ADD fis month start date" = Table.AddColumn(#"ADD fis month mmm-yyyy", "Fis Month Start Date", each Date.StartOfMonth([Date]), type date),
+				    #"ADD fis month" = Table.AddColumn(#"ADD fis month start date", "Fis Month", each Date.ToText( [Date], "MMM" ), type text),
+				    #"ADD relative month num" = Table.AddColumn(#"ADD fis month", "Month Relative Num", each 
+				( Date.Year([Date]) * 12 + Date.Month([Date]) )- 
+				( Date.Year( Date.From( DateTime.FixedLocalNow() ) ) * 12 + Date.Month(Date.From( DateTime.FixedLocalNow() )) )
+				, type number),
+				    #"--Week Columns--" = #"ADD relative month num",
+				    #"ADD wk of year usa" = Table.AddColumn(#"--Week Columns--", "Week of Year (USA)", each [
+				//Get the assumptions
+				vrRowDate  = [Date],
+				vrYrStartMon = [FirstMonthOfFiscal],
+				vrDowStart = [First Day of Wk Num],
+				
+				//Figure out the FisYrs start date for this row
+				vrRowYear  = Date.Year( vrRowDate ),
+				vrRefDateRaw = #date( vrRowYear, 1, 1 ),
+				
+				//Get the first day of the week for each
+				vrYrWkStart = Date.StartOfWeek( vrRefDateRaw, vrDowStart ),
+				vrRowWkStart = Date.StartOfWeek( vrRowDate, vrDowStart ),
+				
+				//Get the days between and divide by 7 to get wks between.
+				vrWeekNum = 
+				    Duration.Days(  vrRowWkStart - vrYrWkStart ) 
+				    / 7 
+				    + 1
+				][vrWeekNum], type number),
+				    #"ADD we start date" = Table.AddColumn(#"ADD wk of year usa", "Week Start Date", each Date.StartOfWeek([Date], [First Day of Wk Num]), type date),
+				    #"ADD fis wk of year usa" = Table.AddColumn(#"ADD we start date", "Fis Week Of Year (USA)", each [
+				//Get the assumptions
+				vrRowDate  = [Date],
+				vrYrStartMon = [FirstMonthOfFiscal],
+				vrDowStart = [First Day of Wk Num],
+				
+				//Figure out the FisYrs start date for this row
+				vrRowMonth = Date.Month( vrRowDate ),
+				vrRowYear  = Date.Year( vrRowDate ),
+				vrDateInCurrCalYear = ( vrRowMonth >= vrYrStartMon ),
+				vrRefDateRaw =
+				    if   vrDateInCurrCalYear
+				    then #date( vrRowYear,     vrYrStartMon, 1 )
+				    else #date( vrRowYear - 1, vrYrStartMon, 1 ),
+				
+				//Get the first day of the week for each
+				vrYrWkStart = Date.StartOfWeek( vrRefDateRaw, vrDowStart ),
+				vrRowWkStart = Date.StartOfWeek( vrRowDate, vrDowStart ),
+				
+				//Get the days between and divide by 7 to get wks between.
+				vrWeekNum = 
+				    Duration.Days(  vrRowWkStart - vrYrWkStart ) 
+				    / 7 
+				    + 1
+				][vrWeekNum], type number),
+				    #"ADD wk relative" = Table.AddColumn(#"ADD fis wk of year usa", "Week Relative", each [
+				vrRowDate = [Date],
+				vrSysDate = Date.From( DateTime.FixedLocalNow() ),
+				vrWeeksStart = [First Day of Wk Num],
+				
+				vrRowWkStart = Date.StartOfWeek( vrRowDate, vrWeeksStart ),
+				vrSysWkStart = Date.StartOfWeek( vrSysDate, vrWeeksStart ),
+				vrRelativeWeek = 
+				    Duration.Days( vrRowWkStart - vrSysWkStart ) / 7
+				][vrRelativeWeek], type number),
+				    #"ADD day of wk name" = Table.AddColumn(#"ADD wk relative", "Day of Week", each Date.ToText([Date], "ddd"), type text),
+				    #"ADD day of wk num" = Table.AddColumn(#"ADD day of wk name", "Day of Wk Num", each Date.DayOfWeek( [Date], [First Day of Wk Num] ) + 1, Int64.Type),
+				    #"ADD weekday flag" = Table.AddColumn(
+				    #"ADD day of wk num",
+				    "Weekday Flag",
+				    each if Date.DayOfWeek([Date], Day.Sunday) <= 4
+				        then 1   // Sunday–Thursday → Weekdays
+				        else 0,  // Friday–Saturday → Weekend
+				    Int64.Type
+				),
+				    #"ADD weekday label" = Table.AddColumn(
+				    #"ADD weekday flag",
+				    "Weekday Label",
+				    each if Date.DayOfWeek([Date], Day.Sunday) <= 4
+				        then "Weekday"   // Sunday–Thursday
+				        else "Weekend",  // Friday–Saturday
+				    type text
+				),
+				    #"DELETE helper columns" = Table.RemoveColumns(#"ADD weekday label",{"First Day of Wk Num", "LastMonthOfFiscal", "FirstMonthOfFiscal", "FisRefDate"}),
+				    #"--Keep Reorder Rename--" = #"DELETE helper columns"
+				in
+				    #"--Keep Reorder Rename--"
+				```
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

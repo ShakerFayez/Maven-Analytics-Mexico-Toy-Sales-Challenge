@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Toy Store Sales Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "45b8e633-8eae-47cf-aff4-b3dbfa264ec0"
+  }
+}

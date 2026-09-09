@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "6bad519a86112f6a0bf7",
+  "position": {
+    "x": 483.7223034449475,
+    "y": 673.257725227463,
+    "z": 2000,
+    "height": 46.511759946629567,
+    "width": 796.51388908603144,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "pageNavigator",
+    "drillFilterOtherVisuals": true
+  },
+  "howCreated": "InsertVisualButton"
+}

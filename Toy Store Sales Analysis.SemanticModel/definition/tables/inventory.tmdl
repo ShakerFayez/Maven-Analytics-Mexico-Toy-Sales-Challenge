@@ -1,0 +1,66 @@
+table inventory
+	lineageTag: 6609841f-db9a-468c-8488-d1c629ffe082
+
+	column Store_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a8f7f83-b65d-4ed9-b606-9d77eaca5745
+		summarizeBy: none
+		sourceColumn: Store_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: a0aef7fc-1cd8-4ef4-966f-ddbc50436aec
+		summarizeBy: none
+		sourceColumn: Product_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stock_On_Hand
+		dataType: int64
+		formatString: 0
+		lineageTag: 0dd7dedc-0d11-43f3-b831-5a7af84bf828
+		summarizeBy: sum
+		sourceColumn: Stock_On_Hand
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is At Risk' = ```
+			
+			VAR ProdID = inventory[Product_ID]
+			VAR StoreID = inventory[Store_ID]
+			VAR Stock = inventory[Stock_On_Hand]
+			VAR DailyRate = 
+			    CALCULATE(
+			        [Avg Daily Units Sold (30d)],
+			        sales[Product_ID] = ProdID,
+			        sales[Store_ID] = StoreID
+			    )
+			VAR DaysOfSupply = DIVIDE(Stock, DailyRate)
+			RETURN
+			    Stock > 0 
+			    && (COALESCE(DailyRate, 0) = 0 || DaysOfSupply > 90)
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: baf99e28-1cf1-48c3-810c-c3ec48bc2d97
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition inventory = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("E:\Data\Maven Toys Data\inventory.csv"), [Delimiter = ",", Columns = 3, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"Store_ID", Int64.Type}, {"Product_ID", Int64.Type}, {"Stock_On_Hand", Int64.Type}})
+				in
+				  #"Changed column type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

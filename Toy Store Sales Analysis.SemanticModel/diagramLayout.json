@@ -1,0 +1,112 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 296.79998779296875
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 599.37499904632568
+          },
+          "nodeIndex": "stores",
+          "nodeLineageTag": "87aa2334-7525-4f1a-88e0-d5e5aa0acb3f",
+          "size": {
+            "height": 229,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 501,
+            "y": 242.375
+          },
+          "nodeIndex": "products",
+          "nodeLineageTag": "23486cc1-4ae5-45e2-b584-48e150dc1792",
+          "size": {
+            "height": 219,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 240,
+            "y": 437.375
+          },
+          "nodeIndex": "inventory",
+          "nodeLineageTag": "6609841f-db9a-468c-8488-d1c629ffe082",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 793.39998626708984,
+            "y": 418.375
+          },
+          "nodeIndex": "data_dictionary",
+          "nodeLineageTag": "17bae384-bf23-444d-84da-80533fcc17aa",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 379.59999084472656,
+            "y": 634.77500915527344
+          },
+          "nodeIndex": "sales",
+          "nodeLineageTag": "3de901f6-8b86-4346-9ca9-b0b4863577fa",
+          "size": {
+            "height": 215,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 791,
+            "y": 226.37499952316284
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "eb6527ba-5287-4e42-95f5-1126133424ad",
+          "size": {
+            "height": 165,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 790,
+            "y": 583.42498731613159
+          },
+          "nodeIndex": "Calendar",
+          "size": {
+            "height": 229,
+            "width": 234
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

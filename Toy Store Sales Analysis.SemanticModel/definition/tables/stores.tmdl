@@ -1,0 +1,64 @@
+table stores
+	lineageTag: 87aa2334-7525-4f1a-88e0-d5e5aa0acb3f
+
+	column Store_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: ba04fac0-024d-455c-8fa8-4f0f7df35436
+		summarizeBy: none
+		sourceColumn: Store_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Store_Name
+		dataType: string
+		lineageTag: 9c4414fd-27f6-4b6d-b8b5-44daa45cb9d1
+		summarizeBy: none
+		sourceColumn: Store_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Store_City
+		dataType: string
+		lineageTag: 5f6b12f5-17d3-41a6-af95-34d9452b41c7
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: Store_City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Store_Location
+		dataType: string
+		lineageTag: 51b191b7-90dd-4f24-90ed-a8075c3e00ff
+		summarizeBy: none
+		sourceColumn: Store_Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Store_Open_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b3735896-9fe8-405b-b7b1-3e72af865b71
+		summarizeBy: none
+		sourceColumn: Store_Open_Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition stores = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("E:\Data\Maven Toys Data\stores.csv"), [Delimiter = ",", Columns = 5, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"Store_ID", Int64.Type}, {"Store_Name", type text}, {"Store_City", type text}, {"Store_Location", type text}, {"Store_Open_Date", type date}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed column type","Maven Toys","",Replacer.ReplaceText,{"Store_Name"}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Replaced Value",{{"Store_Name", Text.Trim, type text}})
+				in
+				  #"Trimmed Text"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

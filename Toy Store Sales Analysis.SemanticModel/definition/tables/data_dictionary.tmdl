@@ -1,0 +1,41 @@
+table data_dictionary
+	lineageTag: 17bae384-bf23-444d-84da-80533fcc17aa
+
+	column Table
+		dataType: string
+		lineageTag: c733bacf-6262-4474-bd97-6afb7bff2519
+		summarizeBy: none
+		sourceColumn: Table
+
+		annotation SummarizationSetBy = Automatic
+
+	column Field
+		dataType: string
+		lineageTag: a799e615-2e72-4a1f-8281-cf1ec4d88675
+		summarizeBy: none
+		sourceColumn: Field
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 90d0bd80-54bc-4365-bd14-a90d21bc9a34
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition data_dictionary = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("E:\Data\Maven Toys Data\data_dictionary.csv"), [Delimiter = ",", Columns = 3, QuoteStyle = QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Table", type text}, {"Field", type text}, {"Description", type text}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'Overview background (2).jpg'"
+                    "Value": "'Designer.png'"
                   }
                 }
               },
@@ -23,14 +23,14 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Overview_background_(2)211265032525219.jpg"
+                    "ItemName": "Designer28847711946386945.png"
                   }
                 }
               },
               "scaling": {
                 "expr": {
                   "Literal": {
-                    "Value": "'Fit'"
+                    "Value": "'Normal'"
                   }
                 }
               }

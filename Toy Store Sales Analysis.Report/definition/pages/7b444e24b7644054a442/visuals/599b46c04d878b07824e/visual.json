@@ -23,11 +23,11 @@
                       "Entity": "stores"
                     }
                   },
-                  "Property": "Store_Name"
+                  "Property": "Store_City"
                 }
               },
-              "queryRef": "stores.Store_Name",
-              "nativeQueryRef": "Store_Name",
+              "queryRef": "stores.Store_City",
+              "nativeQueryRef": "Store_City",
               "active": true
             }
           ]

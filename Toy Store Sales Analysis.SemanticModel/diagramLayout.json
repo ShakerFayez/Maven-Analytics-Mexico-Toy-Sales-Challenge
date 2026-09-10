@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
-        "y": 296.79998779296875
+        "x": 94.4000015258789,
+        "y": 0
       },
       "nodes": [
         {
           "location": {
-            "x": 0,
-            "y": 599.37499904632568
+            "x": 6,
+            "y": 629.37499904632568
           },
           "nodeIndex": "stores",
           "nodeLineageTag": "87aa2334-7525-4f1a-88e0-d5e5aa0acb3f",
@@ -23,8 +23,8 @@
         },
         {
           "location": {
-            "x": 501,
-            "y": 242.375
+            "x": 454,
+            "y": 178.375
           },
           "nodeIndex": "products",
           "nodeLineageTag": "23486cc1-4ae5-45e2-b584-48e150dc1792",
@@ -32,7 +32,7 @@
             "height": 219,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 5
         },
         {
           "location": {
@@ -49,8 +49,8 @@
         },
         {
           "location": {
-            "x": 793.39998626708984,
-            "y": 418.375
+            "x": 786.39998626708984,
+            "y": 382.375
           },
           "nodeIndex": "data_dictionary",
           "nodeLineageTag": "17bae384-bf23-444d-84da-80533fcc17aa",
@@ -58,7 +58,7 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 6
         },
         {
           "location": {
@@ -75,8 +75,8 @@
         },
         {
           "location": {
-            "x": 791,
-            "y": 226.37499952316284
+            "x": 779,
+            "y": 177.37499952316284
           },
           "nodeIndex": "_Measures",
           "nodeLineageTag": "eb6527ba-5287-4e42-95f5-1126133424ad",
@@ -84,7 +84,7 @@
             "height": 165,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 7
         },
         {
           "location": {
@@ -96,7 +96,7 @@
             "height": 229,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 0
         }
       ],
       "name": "All tables",

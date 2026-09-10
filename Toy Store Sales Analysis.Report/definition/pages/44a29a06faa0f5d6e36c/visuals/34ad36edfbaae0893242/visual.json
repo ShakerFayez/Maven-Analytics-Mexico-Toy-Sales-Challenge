@@ -10,7 +10,7 @@
     "tabOrder": 7000
   },
   "visual": {
-    "visualType": "map",
+    "visualType": "azureMap",
     "query": {
       "queryState": {
         "Category": {
@@ -73,39 +73,7 @@
     "objects": {
       "dataPoint": [
         {
-          "properties": {
-            "fillRule": {
-              "linearGradient2": {
-                "min": {
-                  "color": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'minColor'"
-                      }
-                    }
-                  }
-                },
-                "max": {
-                  "color": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'maxColor'"
-                      }
-                    }
-                  }
-                },
-                "nullColoringStrategy": {
-                  "strategy": {
-                    "expr": {
-                      "Literal": {
-                        "Value": "'asZero'"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          "properties": {}
         },
         {
           "properties": {
@@ -166,46 +134,7 @@
           }
         }
       ],
-      "mapStyles": [
-        {
-          "properties": {
-            "mapTheme": {
-              "expr": {
-                "Literal": {
-                  "Value": "'canvasLight'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "bubbles": [
-        {
-          "properties": {
-            "bubbleSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
-                }
-              }
-            }
-          }
-        }
-      ],
       "categoryLabels": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "heatMap": [
         {
           "properties": {
             "show": {
@@ -221,24 +150,148 @@
       "mapControls": [
         {
           "properties": {
-            "showLassoButton": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "showZoomButtons": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
             "geocodingCulture": {
               "expr": {
                 "Literal": {
                   "Value": "''"
+                }
+              }
+            },
+            "defaultStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'high_contrast_light'"
+                }
+              }
+            },
+            "showStylePicker": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showNavigationControls": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showSelectionControl": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "zoom": {
+              "expr": {
+                "Literal": {
+                  "Value": "3.08D"
+                }
+              }
+            },
+            "centerLatitude": {
+              "expr": {
+                "Literal": {
+                  "Value": "24.93240761844558D"
+                }
+              }
+            },
+            "centerLongitude": {
+              "expr": {
+                "Literal": {
+                  "Value": "-101.84365844726562D"
+                }
+              }
+            },
+            "worldWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showRoadDetails": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showBuildingFootprints": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "bubbleLayer": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "bubbleRadius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6L"
+                }
+              }
+            },
+            "minBubbleRadius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6L"
+                }
+              }
+            },
+            "maxRadius": {
+              "expr": {
+                "Literal": {
+                  "Value": "20L"
+                }
+              }
+            },
+            "bubbleStrokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
+            },
+            "autoStrokeColor": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "layerPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "heatMapLayer": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -335,7 +388,21 @@
                         [
                           {
                             "Literal": {
+                              "Value": "'Durango'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
                               "Value": "'La Paz'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Santiago'"
                             }
                           }
                         ]
@@ -362,6 +429,34 @@
             }
           ]
         }
+      },
+      {
+        "name": "a36b1827e850ca0c8050",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Estimated Lost Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "24f201cd3a07b3be2039",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Stockout Rate"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

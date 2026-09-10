@@ -1,5 +1,7 @@
 # Toy Store Sales Analysis — Power BI Report
 
+## 🔗 **[View the live interactive report](https://app.powerbi.com/view?r=eyJrIjoiMWI2MWU3MDMtMjBhMi00YWZmLTgxZTQtOTFlOTMzODc0YTI2IiwidCI6IjM5MDI1NWU4LTdjYTUtNDk2NS1iZDQ4LWU4MGY4MDA0MTFkZCJ9&pageName=f405f97f146cd1e19175)** — no sign-in required
+
 An interactive Power BI analysis of a fictitious Mexican toy store chain's sales, profitability, stockout, and inventory data, built as part of the [Maven Analytics Mexico Toy Sales Challenge](https://mavenanalytics.io/).
 
 **By:** Shaker Fayez

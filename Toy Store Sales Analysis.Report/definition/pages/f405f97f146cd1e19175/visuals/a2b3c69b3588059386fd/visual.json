@@ -45,9 +45,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#563C0A'"
                     }
                   }
                 }
@@ -56,7 +55,7 @@
             "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "71D"
+                  "Value": "33D"
                 }
               }
             }
